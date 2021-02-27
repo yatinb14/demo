@@ -59,10 +59,35 @@ def login():
 
 
 @app.route("/home", methods=['GET', 'POST'])
-def home():	
+def home():
+	a = " "	
+	b = " "
+	c =" "
+	if request.method == 'POST':
+		user = request.form
+		demo = user['demo']
+
 	
 	
-	return render_template('home.html')
+		from datetime import datetime
+
+#date_str = '18-02-2021 4:45:43'
+
+		date_new = datetime.strptime(demo , '%d-%m-%Y %H:%M:%S')
+
+		print(type(date_new))
+
+		print(date_new)
+		b = date_new.date
+		c = date_new.month
+		a = date_new.year
+		d = date_new.hour
+		print(d)
+		print(a)
+
+	
+	
+	return render_template('home.html',a=a,b=b,c=c)
 
 
 
